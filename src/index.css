@@ -1,0 +1,198 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+  --color-swiss-bg: #FAFAF8;
+  --color-swiss-black: #111111;
+  --color-swiss-red: #E63312;
+  --color-swiss-hairline: #111111;
+  --color-swiss-subtle: #767676;
+}
+
+*, *::before, *::after {
+  border-radius: 0px !important;
+}
+
+/* Allow circular cursor elements to retain border-radius */
+.custom-cursor-element,
+.custom-cursor-element *,
+.rounded-full {
+  border-radius: 9999px !important;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #FAFAF8;
+  color: #111111;
+  overflow-x: hidden;
+  line-height: 1.5;
+  letter-spacing: -0.015em;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Swiss 12-Column Grid Guide */
+.swiss-container {
+  width: 100%;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+@media (min-width: 640px) {
+  .swiss-container {
+    padding-left: 36px;
+    padding-right: 36px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .swiss-container {
+    padding-left: 56px;
+    padding-right: 56px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .swiss-container {
+    padding-left: 64px;
+    padding-right: 64px;
+  }
+}
+
+/* 1px Hairline Structural Rules */
+.hairline-b {
+  border-bottom: 1px solid #111111;
+}
+
+.hairline-t {
+  border-top: 1px solid #111111;
+}
+
+.hairline-l {
+  border-left: 1px solid #111111;
+}
+
+.hairline-r {
+  border-right: 1px solid #111111;
+}
+
+.hairline-all {
+  border: 1px solid #111111;
+}
+
+/* Left-aligned, ragged-right typography discipline */
+h1, h2, h3, h4, h5, h6, p, span, div {
+  text-align: left;
+}
+
+/* Custom Cursor styles on non-touch devices */
+@media (pointer: fine) {
+  body.has-custom-cursor,
+  body.has-custom-cursor a,
+  body.has-custom-cursor button,
+  body.has-custom-cursor [role="button"],
+  body.has-custom-cursor .cursor-pointer {
+    cursor: none !important;
+  }
+
+  body.has-custom-cursor input,
+  body.has-custom-cursor textarea,
+  body.has-custom-cursor select {
+    cursor: text !important;
+  }
+}
+
+/* Custom Cursor Section-State Animations */
+@keyframes cursorSlowSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes cursorSubtlePulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.animate-cursor-spin {
+  animation: cursorSlowSpin 5s linear infinite;
+}
+
+.animate-cursor-pulse {
+  animation: cursorSubtlePulse 2.4s ease-in-out infinite;
+}
+
+/* Minimalist precision scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FAFAF8;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #111111;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #E63312;
+}
+
+/* Clean full-bleed mobile menu minimal Swiss scrollbar */
+.mobile-menu-scroll {
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: #333333 #111111;
+  overflow-x: hidden !important;
+}
+
+.mobile-menu-scroll::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  background-color: #111111;
+  display: block;
+}
+
+.mobile-menu-scroll::-webkit-scrollbar-track {
+  background: #181818;
+  border-radius: 0px;
+}
+
+.mobile-menu-scroll::-webkit-scrollbar-thumb {
+  background: #333333;
+  border-radius: 0px;
+}
+
+.mobile-menu-scroll::-webkit-scrollbar-thumb:hover {
+  background: #E63312;
+}
+
+/* Swiss Wordmark Proximity Inversion */
+.wordmark-letter {
+  color: #111111;
+  -webkit-text-fill-color: #111111;
+  -webkit-text-stroke: 0px transparent;
+  transition: color 120ms linear, -webkit-text-fill-color 120ms linear, -webkit-text-stroke 120ms linear;
+}
+
+.wordmark-letter.is-outline {
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+  -webkit-text-stroke: 2.5px #111111 !important;
+}
+
+@media (min-width: 768px) {
+  .wordmark-letter.is-outline {
+    -webkit-text-stroke: 3px #111111 !important;
+  }
+}
